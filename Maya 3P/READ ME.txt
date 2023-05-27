@@ -1,0 +1,5 @@
+Propiedad de Gabriel Cardenas y David Rivera
+
+//////////////////////////////////////////// IMPORTANTE EN MAYA /////////////////////////////////////////////////////////////
+
+-LA ESCALA DEBE DE ESTAR EN CM! (Default) esto porque utilizamos MASH NETWORKS que no funcionan con otras escalas mas que cm!!
