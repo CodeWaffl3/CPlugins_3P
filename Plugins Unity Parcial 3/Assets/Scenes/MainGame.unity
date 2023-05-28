@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 118174941}
   - component: {fileID: 118174940}
   m_Layer: 10
-  m_Name: Terrain_0_0_5465bf0a-8d25-40a5-8e15-ab08120ff47c
+  m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,7 +778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464608651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.7, y: 25, z: 17.8}
+  m_LocalPosition: {x: 12.7, y: 19.59, z: 17.8}
   m_LocalScale: {x: 0.7, y: 1, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -816,10 +816,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62d13825a7633045a4c0e16dec66f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 150
   healthbar: {fileID: 1087945869}
-  playerWalkSpeed: 5
-  playerSprintSpeed: 7
+  playerWalkSpeed: 350
+  playerSprintSpeed: 450
   jumpForce: 7
   jumpCooldown: 0.25
   airMultiplier: 0.4
