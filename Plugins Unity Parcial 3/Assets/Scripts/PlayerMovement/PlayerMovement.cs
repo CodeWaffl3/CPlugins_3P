@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] private int health;
-    public TMP_Text healthText;
+
+    public HealthBar healthbar;
     
     [Header("Movement - Moving")]
     
@@ -57,13 +58,17 @@ public class PlayerMovement : MonoBehaviour
     };
     void Start()
     {
-        healthText.text = $"Health: {health}";
+        healthbar.SetMaxHealth(health);
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
     void Update()
     {
-        
+        ///// EJEMPLO TAKE DMG
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TakeDamage(20);
+        }
         
         if (health <= 0)
         {
@@ -98,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        healthText.text = $"Health: {health}";
+        
         MovePlayer();
     }
 
@@ -177,6 +182,13 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJumpCoolDown()
     {
         readyToJump = true;
+    }
+
+    private void TakeDamage(int dmg)
+    {
+        health -= dmg;
+        
+        healthbar.SetHealth(health);
     }
 
     private void OnCollisionEnter(Collision other)
