@@ -1,0 +1,5 @@
+ECHO OFF
+ECHO Moving files...
+::MOVE '.\ModelImporting.py" "D:\Program Files\Autodesk\Maya2023\Maya2023\bin\plug-ins"
+robocopy ./ "D:\Andres\Documents\Programing\Clase de plugins\Importing archives\otra" ImportObj.py
+PAUSE
