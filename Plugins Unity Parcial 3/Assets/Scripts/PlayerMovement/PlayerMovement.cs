@@ -4,17 +4,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
 using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] private int health;
-    public TMP_Text chestsText;
     public TMP_Text healthText;
-
-    private int ChestLeft;
+    
     [Header("Movement - Moving")]
     
     private float playerMoveSpeed;
@@ -60,15 +57,15 @@ public class PlayerMovement : MonoBehaviour
     };
     void Start()
     {
-        ChestLeft = 10;
-        chestsText.text = $"Chests Left: {ChestLeft}";
         healthText.text = $"Health: {health}";
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
     void Update()
     {
-        if (health <= 0 || ChestLeft <= 0)
+        
+        
+        if (health <= 0)
         {
             Debug.Log("GAME FINISHED");
             SceneManager.LoadScene("GameOver");
@@ -78,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(rb.velocity.magnitude);
         //Checamos si esta en el piso con un raycast
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.3f, whatIsGround);
-        //Debug.DrawRay(transform.position,Vector3.down * (playerHeight + 0.3f),Color.green);
+        Debug.DrawRay(transform.position,Vector3.down * (playerHeight + 0.3f),Color.green);
         
         KeyboardInput();
         SpeedControl();
@@ -89,11 +86,13 @@ public class PlayerMovement : MonoBehaviour
         
         if (isGrounded)
         {
+            Debug.Log("Grounded");
             rb.drag = groundDrag;
         }
         else
         {
             rb.drag = 0;
+            Debug.Log($"Not Grounded Drag: {rb.drag}");
         }
     }
 
@@ -142,20 +141,16 @@ public class PlayerMovement : MonoBehaviour
         //Dos vectores con escalares sumados
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         
-        //on ground TODO ESTE IF ->
+        //on ground
         if (isGrounded)
         {
             rb.AddForce(moveDirection * playerMoveSpeed * 10f, ForceMode.Force);
         }
+        //In air    
         else if (!isGrounded)
         {
             rb.AddForce(moveDirection * playerMoveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
-        //In air
-        // else if (!isGrounded)
-        // {
-        //     
-        // }
     }
 
     private void SpeedControl()
@@ -198,17 +193,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Chest")
-        {
-            Debug.Log("COLISION!");
-            Destroy(other.gameObject);
-            ChestLeft--;
-            chestsText.text = $"Chests Left: {ChestLeft}";
-        }
-
-        if (other.tag == "MusicBoss")
-        {
-            
-        }
+        
     }
 }
