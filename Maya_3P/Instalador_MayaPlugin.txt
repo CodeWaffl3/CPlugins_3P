@@ -1,0 +1,4 @@
+ECHO OFF
+ECHO Moving files...
+robocopy ./ "PATH A DONDE VA algo asi ->/Atodesk/Maya2023/bin/plugins" ParcialIII.py
+PAUSE
