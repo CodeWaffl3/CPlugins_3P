@@ -46,9 +46,9 @@ class M_Window(object):
         self.ReconPoles = cmds.text(l="Recon Poles")
         self.ReconPolesCount = cmds.intField(minValue=1, maxValue=15, value=8)
 
-        #Particles
-        self.Particles = cmds.text(l="Particles")
-        
+        #Particles 
+        self.Particles = cmds.text(l="Particles (1=yes, 0=no)")
+        self.ParticlesField = cmds.intField(minValue=0, maxValue=1, value=1)
 
         self.CreateLandscapeButton = cmds.button(l="Generate Landscape", c=self.createLandScape)
 
@@ -62,6 +62,7 @@ class M_Window(object):
         Trees = cmds.intField(self.TreesCount, query=True, value=True)
         Houses = cmds.intField(self.HouseCount, query=True, value=True)
         ReconPoles = cmds.intField(self.ReconPolesCount, query=True, value=True)
+        Particles = cmds.intField(self.ParticlesField, query=True, value=True)
 
         #################### CREATE DEFORMER MAP #####################################
 
@@ -172,14 +173,14 @@ class M_Window(object):
         cmds.setAttr("DistributionTrees_Distribute.pointCount", Trees)
         cmds.setAttr("DistributionTrees_Distribute.seed", 100)
 
-
+        #### PARTICULAS ####
+        if Particles == 1:
+            particles = Particles()
+        
 
     def fdeleteAll(self, *args):
         cmds.select(all=True)
         cmds.delete()
-
-
-myWindow = M_Window()
 
 
 def Particles():
@@ -202,6 +203,7 @@ def Particles():
     cmds.connectDynamic("nParticle1", f="vortexField1")
 
 
+myWindow = M_Window()
 
 
 
