@@ -133,7 +133,7 @@ class M_Window(object):
         #### RECON POLES ####
 
         # importa el objeto
-        cmds.file("C:/Users/PC/Documents/UP/6S/plugins/CPlugins_3P/Maya_3P/ObjetosFBX/ReconPole.fbx", i=True)
+        cmds.file("C:/Users/PC/Documents/UP/6S/plugins/CPlugins_3P/Maya_3P/ObjetosFBX/ReconPole.ma", i=True)
         cmds.setAttr("ReconPole.scaleX", 0.04)
         cmds.setAttr("ReconPole.scaleY", 0.04)
         cmds.setAttr("ReconPole.scaleZ", 0.04)
@@ -151,7 +151,7 @@ class M_Window(object):
         #### CASAS ####
 
         # Importa el objeto
-        cmds.file("C:/Users/PC/Documents/UP/6S/plugins/CPlugins_3P/Maya_3P/ObjetosFBX/House.fbx", i=True)
+        cmds.file("C:/Users/PC/Documents/UP/6S/plugins/CPlugins_3P/Maya_3P/ObjetosFBX/House.ma", i=True)
         cmds.setAttr("House.scaleX", 0.03)
         cmds.setAttr("House.scaleY", 0.03)
         cmds.setAttr("House.scaleZ", 0.03)
