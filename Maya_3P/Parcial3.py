@@ -3,6 +3,24 @@ import MASH.api as mapi
 from random import randrange
 
 
+def Particles():
+    cmds.polySphere(r=1, n='sphere')
+    cmds.select('sphere')
+    cmds.move(0, 5.486749, 0, 'sphere', r=True)
+
+    cmds.emitter(type='omni',name="particlesobj1",
+                 rate= 10, sro= 0,nuv= 0, cye= 'none', cyi= 1, spd= 1, srn= 0, nsp= 1,
+                 tsp= 0, mxd= 0, mnd= 0,dx= 1, dy= 0, dz= 0, sp= 0)
+
+    cmds.nParticle()
+    cmds.connectDynamic(em="particlesobj1")
+
+    cmds.setAttr("nucleus1.gravity", 0)
+    cmds.setAttr("nucleus1.windSpeed", 10)
+    cmds.setAttr("nParticleShape1.color[0].color_Color", 1, 0, 0, type="double3")
+    cmds.select('nParticle1')
+    cmds.vortex(pos= [0, 0, 0], m =100, att= 1, ax= 0, ay=1, az= 0, mxd =-1, vsh= 'none', vex= 0, vof= [0 ,0, 0], vsw= 360, tsr= 0.5)
+    cmds.connectDynamic("nParticle1", f="vortexField1")
 
 
 ############## VENTANA #######################
@@ -47,7 +65,7 @@ class M_Window(object):
         self.ReconPolesCount = cmds.intField(minValue=1, maxValue=15, value=8)
 
         #Particles 
-        self.Particles = cmds.text(l="Particles (1=yes, 0=no)")
+        self.ParticlesText = cmds.text(l="Particles (1=yes, 0=no)")
         self.ParticlesField = cmds.intField(minValue=0, maxValue=1, value=1)
 
         self.CreateLandscapeButton = cmds.button(l="Generate Landscape", c=self.createLandScape)
@@ -62,7 +80,7 @@ class M_Window(object):
         Trees = cmds.intField(self.TreesCount, query=True, value=True)
         Houses = cmds.intField(self.HouseCount, query=True, value=True)
         ReconPoles = cmds.intField(self.ReconPolesCount, query=True, value=True)
-        Particles = cmds.intField(self.ParticlesField, query=True, value=True)
+        ParticlesValue = cmds.intField(self.ParticlesField, query=True, value=True)
 
         #################### CREATE DEFORMER MAP #####################################
 
@@ -174,33 +192,13 @@ class M_Window(object):
         cmds.setAttr("DistributionTrees_Distribute.seed", 100)
 
         #### PARTICULAS ####
-        if Particles == 1:
+        if ParticlesValue == 1:
             particles = Particles()
         
 
     def fdeleteAll(self, *args):
         cmds.select(all=True)
         cmds.delete()
-
-
-def Particles():
-    cmds.polySphere(r=1, n='sphere')
-    cmds.select('sphere')
-    cmds.move(0, 5.486749, 0, 'sphere', r=True)
-
-    cmds.emitter(type='omni',name="particlesobj1",
-                 rate= 10, sro= 0,nuv= 0, cye= 'none', cyi= 1, spd= 1, srn= 0, nsp= 1,
-                 tsp= 0, mxd= 0, mnd= 0,dx= 1, dy= 0, dz= 0, sp= 0)
-
-    cmds.nParticle()
-    cmds.connectDynamic(em="particlesobj1")
-
-    cmds.setAttr("nucleus1.gravity", 0)
-    cmds.setAttr("nucleus1.windSpeed", 10)
-    cmds.setAttr("nParticleShape1.color[0].color_Color", 1, 0, 0, type="double3")
-    cmds.select('nParticle1')
-    cmds.vortex(pos= [0, 0, 0], m =100, att= 1, ax= 0, ay=1, az= 0, mxd =-1, vsh= 'none', vex= 0, vof= [0 ,0, 0], vsw= 360, tsr= 0.5)
-    cmds.connectDynamic("nParticle1", f="vortexField1")
 
 
 myWindow = M_Window()
