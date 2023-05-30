@@ -1,0 +1,7 @@
+paths
+
+"C:/Users/Administrator/Desktop/final/CPlugins_3P/Maya_3P/HeightMaps/{randHeightMap}.jpeg"
+"C:/Users/Administrator/Desktop/final/CPlugins_3P/Maya_3P/HeightMaps/{randHeightMap}.jpg"
+"C:/Users/Administrator/Desktop/final/CPlugins_3P/Maya_3P/ObjetosFBX/ReconPole.fbx"
+"C:/Users/Administrator/Desktop/final/CPlugins_3P/Maya_3P/ObjetosFBX/House.fbx"
+"C:/Users/Administrator/Desktop/final/CPlugins_3P/Maya_3P/ObjetosFBX/Trees/Trees.ma"
