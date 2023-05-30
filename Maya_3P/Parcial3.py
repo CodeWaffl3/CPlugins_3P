@@ -114,14 +114,14 @@ class M_Window(object):
         cmds.connectAttr("MountainTexture.outUV", "TextureFile.uv")
         cmds.connectAttr("MountainTexture.outUvFilterSize", "TextureFile.uvFilterSize")
         cmds.connectAttr("TextureFile.outColor", "HeightMap.texture")
-        path = f"D:/Andres/Documents/MayaProjects/5.jpeg"
+        path = f"./HeightMaps/5.jpeg"
 
         randHeightMap = randrange(1, 5)
 
         if (randHeightMap == 5):
-            path = f"C:/Users/PC/Documents/UP/6S/plugins/CPlugins_3P/Maya_3P/HeightMaps/{randHeightMap}.jpeg"
+            path = f"./HeightMaps/{randHeightMap}.jpeg"
         else:
-            path = f"C:/Users/PC/Documents/UP/6S/plugins/CPlugins_3P/Maya_3P/HeightMaps/{randHeightMap}.jpg"
+            path = f"./HeightMaps/{randHeightMap}.jpg"
         cmds.setAttr("TextureFile.fileTextureName", path, type="string")
         cmds.setAttr("HeightMap.strength", 10)
 
@@ -133,7 +133,7 @@ class M_Window(object):
         #### RECON POLES ####
 
         # importa el objeto
-        cmds.file("C:/Users/PC/Documents/UP/6S/plugins/CPlugins_3P/Maya_3P/ObjetosFBX/ReconPole.ma", i=True)
+        cmds.file("./ObjetosFBX/ReconPole.fbx", i=True)
         cmds.setAttr("ReconPole.scaleX", 0.04)
         cmds.setAttr("ReconPole.scaleY", 0.04)
         cmds.setAttr("ReconPole.scaleZ", 0.04)
@@ -151,7 +151,7 @@ class M_Window(object):
         #### CASAS ####
 
         # Importa el objeto
-        cmds.file("C:/Users/PC/Documents/UP/6S/plugins/CPlugins_3P/Maya_3P/ObjetosFBX/House.ma", i=True)
+        cmds.file("./ObjetosFBX/House.fbx", i=True)
         cmds.setAttr("House.scaleX", 0.03)
         cmds.setAttr("House.scaleY", 0.03)
         cmds.setAttr("House.scaleZ", 0.03)
@@ -169,7 +169,7 @@ class M_Window(object):
         #### ARBOLES ####
 
         # Importa los objetos
-        cmds.file("C:/Users/PC/Documents/UP/6S/plugins/CPlugins_3P/Maya_3P/ObjetosFBX/Trees/Trees.ma", i=True)
+        cmds.file("./ObjetosFBX/Trees/Trees.ma", i=True)
 
         # Hace el MASH network para ponerlos en el mapa
         #   For para seleccionar los 12 arboles
