@@ -64,12 +64,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        ///// EJEMPLO TAKE DMG
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            TakeDamage(20);
-        }
-        
         if (health <= 0)
         {
             Debug.Log("GAME FINISHED");
@@ -195,11 +189,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Enemies>() != null)
         {
-            health -= 25;
-        }
-        if (other.gameObject.GetComponent<Minions>() != null)
-        {
-            health -= 25;
+            TakeDamage(20);
+            health -= 20;
         }
     }
 
